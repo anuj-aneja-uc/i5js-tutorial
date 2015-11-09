@@ -145,4 +145,5 @@ $RECYCLE.BIN/
 *.lnk
 
 /target/
+/results/
 nbactions*.xml
