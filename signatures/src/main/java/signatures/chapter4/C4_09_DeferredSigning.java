@@ -57,10 +57,10 @@ public class C4_09_DeferredSigning {
 				PdfPKCS7 sgn = new PdfPKCS7(null, chain, hashAlgorithm, null, digest, false);
 		        byte hash[] = DigestAlgorithms.digest(is, digest.getMessageDigest(hashAlgorithm));
 				Calendar cal = Calendar.getInstance();
-		        byte[] sh = sgn.getAuthenticatedAttributeBytes(hash, cal, null, null, CryptoStandard.CMS);
+		        byte[] sh = sgn.getAuthenticatedAttributeBytes(hash, null, null, CryptoStandard.CMS);
 		        byte[] extSignature = signature.sign(sh);
 		        sgn.setExternalDigest(extSignature, null, signature.getEncryptionAlgorithm());
-				return sgn.getEncodedPKCS7(hash, cal, null, null, null, CryptoStandard.CMS);
+				return sgn.getEncodedPKCS7(hash, null, null, null, CryptoStandard.CMS);
 			}
 			catch (IOException ioe) {
 				throw new ExceptionConverter(ioe);

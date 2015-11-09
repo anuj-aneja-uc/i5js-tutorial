@@ -73,7 +73,7 @@ public class C5_03_CertificateValidation extends C5_01_SignatureIntegrity {
 			ocsps.add(pkcs7.getOcsp());
 		OCSPVerifier ocspVerifier = new OCSPVerifier(null, ocsps);
 		List<VerificationOK> verification =
-			ocspVerifier.verify(signCert, issuerCert, date);
+				ocspVerifier.verify(signCert, issuerCert, date);
 		if (verification.size() == 0) {
 			List<X509CRL> crls = new ArrayList<X509CRL>();
 			if (pkcs7.getCRLs() != null) {
