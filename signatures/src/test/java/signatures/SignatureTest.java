@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.security.SignaturePermissions;
 import com.itextpdf.text.pdf.security.VerificationException;
 import com.itextpdf.text.pdf.security.VerificationOK;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -41,6 +42,7 @@ import java.util.Map;
 import org.bouncycastle.cert.ocsp.BasicOCSPResp;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.tsp.TimeStampToken;
+import org.junit.Before;
 
 public class SignatureTest {
 
@@ -55,6 +57,15 @@ public class SignatureTest {
 
     private PrintStream oldSysOut;
     private ByteArrayOutputStream output;
+
+    @Before
+    public void setup() {
+        new File("results/chapter1/").mkdirs();
+        new File("results/chapter2/").mkdirs();
+        new File("results/chapter3/").mkdirs();
+        new File("results/chapter4/").mkdirs();
+    }
+
 
     protected void setupSystemOutput() {
         output = new ByteArrayOutputStream();
